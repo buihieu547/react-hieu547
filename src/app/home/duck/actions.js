@@ -5,8 +5,6 @@ const incrementCount = value => ({
   value: value
 });
 
-
-
 export default {
   incrementCount
 };

@@ -1,12 +1,8 @@
 import types from "./types";
 
-const INITIAL_STATE = {
-  count: 0,
-  subreddit: "",
-  showSpinner: false,
-  subredditData: []
-};
-const homeReducer = (state = INITIAL_STATE, action) => {
+const INITIAL_STATE = {};
+
+const vocabularyReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.INCREMENT_COUNT: {
       const { value } = action;
@@ -22,4 +18,4 @@ const homeReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default homeReducer;
+export default vocabularyReducer;

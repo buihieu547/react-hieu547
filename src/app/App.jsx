@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomeContainer from "./home/HomeContainer";
+import AddWordContainer from "./vocabulary/AddWordContainer";
 
 class App extends Component {
   constructor(props) {
@@ -12,48 +13,27 @@ class App extends Component {
 
   render() {
     return (
-      <div class="page" style={{marginTop: 10 + 'px'}}>
-        <div class="pageHeader">
-          <div class="title">Dashboard</div>
-          <div class="userPanel">
-            <i class="fa fa-chevron-down" />
-            <span class="username">John Doe </span>
-            <img
-              src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/73.jpg"
-              width="40"
-              height="40"
-            />
+      <div className="page">
+        <div className="pageHeader">
+          <div className="title">LOGO</div>
+          <div className="userPanel">
+            <span className="username">John Doe </span>
           </div>
         </div>
-        <div class="main">
-          <div class="nav">
-            <div class="searchbox">
+        <div className="main">
+          <div className="nav">
+            <div className="searchbox">
               <div>
-                <i class="fa fa-search" />
+                <i className="fa fa-search" />
                 <input type="search" placeholder="Search" />
               </div>
             </div>
-            <div class="menu">
-              <div class="title">Navigation</div>
+            <div className="menu">
+              <div className="title">Navigation</div>
               <ul>
-                <li>
-                  {" "}
-                  <i class="fa fa-home" />
+                <li className="active">
+                  <i className="fa fa-home" />
                   Home
-                </li>
-                <li>
-                  <i class="fa fa-signal" />
-                  Activity
-                </li>
-                <li class="active">
-                  {" "}
-                  <i class="fa fa-tasks" />
-                  Manage Tasks
-                </li>
-                <li>
-                  {" "}
-                  <i class="fa fa-envelope" />
-                  Messages
                 </li>
               </ul>
             </div>
@@ -61,6 +41,7 @@ class App extends Component {
           <Router>
             <Route exact path="/" component={HomeContainer} />
             <Route path="/home" component={HomeContainer} />
+            <Route path="/add-new-word" component={AddWordContainer} />
           </Router>
         </div>
       </div>

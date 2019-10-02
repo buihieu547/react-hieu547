@@ -1,7 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);
 @import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 html {
-  background-image: url(http://www.ultraimg.com/images/2UeGfhZ.jpg);
+  background-image: url(https://www.ultraimg.com/images/2UeGfhZ.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+*,
+*:after,
+*:before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -14,10 +24,10 @@ body {
 
 .page {
   position: absolute;
-  width: 80%;
-  height: 80%;
-  left: 10%;
-  top: 10%;
+  width: 90%;
+  left: 5%;
+  top: 8%;
+  bottom: 8%;
   background-color: rgba(255, 255, 255, 0.7);
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -72,7 +82,7 @@ body {
 .main {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 50px);
   clear: both;
   background-color: white;
 }
@@ -146,6 +156,7 @@ body {
 .main .view {
   position: relative;
   margin-left: 200px;
+  height: 100%;
 }
 .main .view .viewHeader {
   width: 100%;
@@ -188,19 +199,17 @@ body {
 .main .view .viewHeader .functions .button.inverz {
   background-color: inherit;
   border: 1px solid #AAA;
-  width: 10px;
+  width: 35px;
   color: #AAA;
   font-size: 1.3em;
-  padding-left: 10px;
-  padding-right: 16px;
+  text-align: center;
+  line-height: 28px;
+  padding: 0;
 }
 .main .view .content {
-  position: absolute;
-  left: 0px;
-  top: 70px;
-  right: 0px;
-  bottom: 0px;
-  padding: 10px;
+  overflow: auto;
+  height: calc(100% - 73px);
+  width: 100%;
 }
 .main .view .content .list .title {
   width: 100%;
@@ -211,21 +220,17 @@ body {
 }
 .main .view .content .list ul {
   width: 100%;
-  padding-left: 10px;
   color: #777;
+  padding: 10px;
 }
 .main .view .content .list ul li {
   width: 100%;
   height: 50px;
   line-height: 50px;
   list-style: none;
-  border-top: 1px solid #AAA;
 }
 .main .view .content .list ul li.checked {
   background-color: #F0F4F5;
-}
-.main .view .content .list ul li:last-child {
-  border-bottom: 1px solid #AAA;
 }
 .main .view .content .list ul li i {
   float: left;

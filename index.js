@@ -1,4 +1,4 @@
-import "./style.css";
+import "./styles.css";
 import App from "./src/app/App.jsx";
 import rootReducer from "./src/reducers.js";
 import React from "react";

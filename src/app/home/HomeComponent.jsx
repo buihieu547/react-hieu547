@@ -11,7 +11,12 @@ class HomeComponent extends Component {
         <div className="viewHeader">
           <div className="title">Dictionary</div>
           <div className="functions">
-            <div className="button blue" onClick={() => this.props.history.push('/add-new-word')}>Add New Word</div>
+            <div
+              className="button blue"
+              onClick={() => this.props.history.push("/add-new-word")}
+            >
+              Add Word
+            </div>
             <div className="button inverz">
               <i className="fa fa-trash-o" />
             </div>
@@ -21,9 +26,22 @@ class HomeComponent extends Component {
           <div className="list">
             <ul>
               {vocabularyList.map((e, i) => (
-                <li>
-                  <i className="fa fa-check-square-o" />
-                  <span>{e.name}</span>
+                <li key={e.id}>
+                  <label class="label--checkbox">
+                    <input type="checkbox" class="checkbox" />
+                  </label>
+                  <span className="margin-right-20 emphasize">
+                    {e.name}
+                    &nbsp;&nbsp;
+                    <b>({e.type})</b>
+                  </span>
+                  <span className="main-color">UK :</span>
+                  <span>&nbsp;{e.pronunciation_uk}</span>
+                  <span className="margin-left-10 margin-right-10">|</span>
+                  <span className="main-color">US :</span>
+                  <span>&nbsp;{e.pronunciation_us}</span>
+                  <span className="margin-left-20 margin-right-20">=></span>
+                  <span className="emphasize">{e.meaning}</span>
                   <div className="info">
                     <div className="button">Backlog</div>
                   </div>

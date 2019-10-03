@@ -237,6 +237,10 @@ body {
 .main .view .content .list ul li.checked {
   background-color: #F0F4F5;
 }
+.main .view .content .list ul li .label--checkbox {
+  float: left;
+  margin-right: 15px;
+}
 .main .view .content .list ul li i {
   float: left;
   width: 30px;
@@ -254,6 +258,9 @@ body {
 }
 .main .view .content .list ul li .info span {
   font-weight: 300;
+}
+.main .view .content .list ul li .info span b {
+  font-size: 11px;
 }
 .main .view .content .list ul li .info .button {
   float: right;
@@ -299,4 +306,66 @@ body {
   background: none;
   color: #fff;
   font-size: 14px;
+}
+
+.label--checkbox {
+  position: relative;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
+.label--checkbox .checkbox {
+  position: relative;
+  cursor: pointer;
+}
+.label--checkbox .checkbox:before {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #f2f2f2;
+}
+.label--checkbox .checkbox:checked:before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  height: .5rem;
+  border-color: #009688;
+  border-top-style: none;
+  border-right-style: none;
+}
+.label--checkbox .checkbox:after {
+  content: "";
+  position: absolute;
+  top: -0.125rem;
+  left: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #fff;
+  cursor: pointer;
+}
+.margin-left-10 {
+  margin-left: 10px;
+}
+.margin-left-20 {
+  margin-left: 20px;
+}
+.margin-right-10 {
+  margin-right: 10px;
+}
+.margin-right-20 {
+  margin-right: 20px;
+}
+.main-color {
+  color: #54b9cd;
+}
+.emphasize {
+  color: #000;
+  font-weight: bold;
 }

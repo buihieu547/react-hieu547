@@ -3,7 +3,7 @@ import AddWordComponent from './AddWordComponent';
 import { vocabularyActions } from './duck';
 
 const mapStateToProps = state => {
-  return { vocabulary: state.vocabulary }
+  return { vocabularyList: state.vocabulary.vocabularyList }
 };
 
 const mapDispatchToProps = dispatch => {

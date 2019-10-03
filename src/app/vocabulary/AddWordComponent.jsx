@@ -9,6 +9,7 @@ import "./duck/styles.css";
 
 const validateForm = Yup.object().shape({
   name: Yup.string().required("Please fill in this field"),
+  type: Yup.string().required("Please fill in this field"),
   pronunciation_us: Yup.string().required("Please fill in this field"),
   pronunciation_uk: Yup.string().required("Please fill in this field"),
   meaning: Yup.string().required("Please fill in this field")
@@ -16,6 +17,7 @@ const validateForm = Yup.object().shape({
 
 const form = {
   name: "",
+  type: "",
   pronunciation_us: "",
   pronunciation_uk: "",
   meaning: "",
@@ -32,12 +34,14 @@ class AddWordComponent extends Component {
   }
 
   submit(value, actions) {
-    this.props.onAddNewWord(value);
-    toast.success("You add successful!");
-    // setTimeout(() => {
-    //   actions.resetForm();
-    //   this.setState({'isShowModal': true});
-    // }, 1000);
+    if (this.props.vocabularyList.some(e => e.name === value.name)) {
+      toast.error("New Word is duplicated!");
+    } else {
+      this.props.onAddNewWord(value);
+      toast.success("You add successful!");
+      actions.resetForm();
+      this.setState({ isShowModal: true });
+    }
   }
 
   render() {
@@ -46,7 +50,12 @@ class AddWordComponent extends Component {
         <div className="viewHeader">
           <div className="title">Add New Word</div>
           <div className="functions">
-            <div className="button" onClick={() => this.props.history.push('/home')}>Back</div>
+            <div
+              className="button"
+              onClick={() => this.props.history.push("/home")}
+            >
+              Back
+            </div>
           </div>
         </div>
         <div className="content">
@@ -88,26 +97,23 @@ class AddWordComponent extends Component {
                 <div className="material-form__container">
                   <Field
                     type="text"
-                    name="pronunciation_us"
-                    id="pronunciation_us"
+                    name="type"
+                    id="type"
                     className="material-form__input"
                     placeholder=" "
                   />
-                  <label
-                    className="material-form__label"
-                    htmlFor="pronunciation_us"
-                  >
-                    Pronunciation (US)
+                  <label className="material-form__label" htmlFor="type">
+                    Type
                   </label>
                   <div className="material-form__focus-animation" />
                   <p
                     className={
-                      errors.pronunciation_us && touched.pronunciation_us
+                      errors.type && touched.type
                         ? "material-form__error active"
                         : "material-form__error"
                     }
                   >
-                    {errors.pronunciation_us}
+                    {errors.type}
                   </p>
                 </div>
                 <div className="material-form__container">
@@ -135,6 +141,31 @@ class AddWordComponent extends Component {
                     {errors.pronunciation_uk}
                   </p>
                 </div>
+                <div className="material-form__container">
+                  <Field
+                    type="text"
+                    name="pronunciation_us"
+                    id="pronunciation_us"
+                    className="material-form__input"
+                    placeholder=" "
+                  />
+                  <label
+                    className="material-form__label"
+                    htmlFor="pronunciation_us"
+                  >
+                    Pronunciation (US)
+                  </label>
+                  <div className="material-form__focus-animation" />
+                  <p
+                    className={
+                      errors.pronunciation_us && touched.pronunciation_us
+                        ? "material-form__error active"
+                        : "material-form__error"
+                    }
+                  >
+                    {errors.pronunciation_us}
+                  </p>
+                </div>              
                 <div className="material-form__container">
                   <Field
                     type="text"
@@ -193,17 +224,19 @@ class AddWordComponent extends Component {
         <ToastContainer />
         <Modal
           showCloseIcon={false}
-          onClose={() => this.props.history.push('/home')}
+          onClose={() => this.props.history.push("/home")}
           open={this.state.isShowModal}
           center
           classNames={{
-            modal: 'modal-type-1'
+            modal: "modal-type-1"
           }}
         >
           <h1>Notification</h1>
           <p>Do you want to continue for adding new word ?</p>
-          <button onClick={() => this.props.history.push('/home')}>No</button>
-          <button onClick={() => this.setState({'isShowModal': false})}>Yes</button>
+          <button onClick={() => this.props.history.push("/home")}>No</button>
+          <button onClick={() => this.setState({ isShowModal: false })}>
+            Yes
+          </button>
         </Modal>
       </div>
     );

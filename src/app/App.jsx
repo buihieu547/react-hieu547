@@ -19,9 +19,12 @@ class App extends Component {
     return (
       <div className="page">
         <div className="pageHeader">
-          <div className="title">LOGO</div>
+          <div className="title">
+            LOGO
+          </div>
           <div className="userPanel">
-            <span className="username">John Doe </span>
+            <span className="username">Hieu Bui</span>
+            <img src="https://avatar.skype.com/v1/avatars/live:buihieu547?auth_key=-2070632841&returnDefaultImage=false&size=l" width="40" height="40" />
           </div>
         </div>
         <div className="main">

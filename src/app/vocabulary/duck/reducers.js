@@ -9,8 +9,9 @@ const vocabularyReducer = (state = INITIAL_STATE, action) => {
     case types.ADD_NEW_WORD: {
       const { value } = action;
       const { vocabularyList } = state;
+      value.id = (new Date().getTime());
       vocabularyList.push(value);
-      
+
       return {
         ...state,
         vocabularyList: vocabularyList

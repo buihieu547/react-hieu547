@@ -34,10 +34,10 @@ class AddWordComponent extends Component {
   submit(value, actions) {
     this.props.onAddNewWord(value);
     toast.success("You add successful!");
-    setTimeout(() => {
-      actions.resetForm();
-      this.setState({'isShowModal': true});
-    }, 1000);
+    // setTimeout(() => {
+    //   actions.resetForm();
+    //   this.setState({'isShowModal': true});
+    // }, 1000);
   }
 
   render() {
@@ -64,6 +64,7 @@ class AddWordComponent extends Component {
               <Form className="material-form">
                 <div className="material-form__container">
                   <Field
+                    autoFocus
                     type="text"
                     name="name"
                     id="name"

@@ -47,6 +47,7 @@
   top: 0;
   left: 0;
   font-size: 0.75em;
+  color: #54b9cd;
 }
 .material-form__input:placeholder-shown:focus ~ .material-form__label {
   color: #54b9cd;
@@ -70,9 +71,6 @@
   width: 100%;
   left: 0;
 }
-.material-form__input:not(:focus):invalid ~ p {
-  transform: translate(0, 5px);
-}
 .material-form__focus-animation {
   position: absolute;
   left: 50%;
@@ -88,6 +86,9 @@
   font-size: 0.75em;
   font-family: sans-serif;
   transition: all 0.25s;
+}
+.material-form__error.active {
+  transform: translate(0, 5px);
 }
 .material-form__button {
   line-height: 50px;

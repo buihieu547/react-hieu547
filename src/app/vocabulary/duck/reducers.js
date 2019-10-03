@@ -1,15 +1,19 @@
 import types from "./types";
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  vocabularyList: []
+};
 
 const vocabularyReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.INCREMENT_COUNT: {
+    case types.ADD_NEW_WORD: {
       const { value } = action;
-      const { count } = state;
+      const { vocabularyList } = state;
+      vocabularyList.push(value);
+      
       return {
         ...state,
-        count: count + value
+        vocabularyList: vocabularyList
       };
     }
 

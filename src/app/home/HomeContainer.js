@@ -3,7 +3,7 @@ import HomeComponent from './HomeComponent';
 import { homeActions } from './duck';
 
 const mapStateToProps = state => {
-  return { home: state.home }
+  return { all: state }
 };
 
 const mapDispatchToProps = dispatch => {

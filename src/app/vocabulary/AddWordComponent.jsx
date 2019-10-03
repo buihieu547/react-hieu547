@@ -1,7 +1,10 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
+import Modal from "react-responsive-modal";
 import "./duck/styles.css";
 
 const validateForm = Yup.object().shape({
@@ -11,36 +14,53 @@ const validateForm = Yup.object().shape({
   meaning: Yup.string().required("Please fill in this field")
 });
 
+const form = {
+  name: "",
+  pronunciation_us: "",
+  pronunciation_uk: "",
+  meaning: "",
+  des: "",
+  reference: ""
+};
+
 class AddWordComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isShowModal: false
+    };
   }
 
   submit(value, actions) {
-    console.log(value, actions);
+    this.props.onAddNewWord(value);
+    toast.success("You add successful!");
+    setTimeout(() => {
+      actions.resetForm();
+      this.setState({'isShowModal': true});
+    }, 1000);
   }
 
   render() {
-    const form = {
-      name: "",
-      pronunciation_us: "",
-      pronunciation_uk: "",
-      meaning: "",
-      des: "",
-      reference: ""
-    };
-
     return (
       <div className="view">
         <div className="viewHeader">
           <div className="title">Add New Word</div>
+          <div className="functions">
+            <div className="button" onClick={() => this.props.history.push('/home')}>Back</div>
+          </div>
         </div>
         <div className="content">
           <Formik
             initialValues={form}
             validationSchema={validateForm}
-            onSubmit={this.submit}
-            render={({ errors, status, touched, isSubmitting }) => (
+            onSubmit={this.submit.bind(this)}
+            render={({
+              errors,
+              status,
+              touched,
+              isSubmitting,
+              setFieldValue
+            }) => (
               <Form className="material-form">
                 <div className="material-form__container">
                   <Field
@@ -56,9 +76,9 @@ class AddWordComponent extends Component {
                   <div className="material-form__focus-animation" />
                   <p
                     className={
-                      errors.name && touched.name ? (
-                        'material-form__error active'
-                      ) : 'material-form__error'
+                      errors.name && touched.name
+                        ? "material-form__error active"
+                        : "material-form__error"
                     }
                   >
                     {errors.name}
@@ -81,9 +101,9 @@ class AddWordComponent extends Component {
                   <div className="material-form__focus-animation" />
                   <p
                     className={
-                      errors.pronunciation_us && touched.pronunciation_us ? (
-                        'material-form__error active'
-                      ) : 'material-form__error'
+                      errors.pronunciation_us && touched.pronunciation_us
+                        ? "material-form__error active"
+                        : "material-form__error"
                     }
                   >
                     {errors.pronunciation_us}
@@ -106,9 +126,9 @@ class AddWordComponent extends Component {
                   <div className="material-form__focus-animation" />
                   <p
                     className={
-                      errors.pronunciation_uk && touched.pronunciation_uk ? (
-                        'material-form__error active'
-                      ) : 'material-form__error'
+                      errors.pronunciation_uk && touched.pronunciation_uk
+                        ? "material-form__error active"
+                        : "material-form__error"
                     }
                   >
                     {errors.pronunciation_uk}
@@ -128,9 +148,9 @@ class AddWordComponent extends Component {
                   <div className="material-form__focus-animation" />
                   <p
                     className={
-                      errors.meaning && touched.meaning ? (
-                        'material-form__error active'
-                      ) : 'material-form__error'
+                      errors.meaning && touched.meaning
+                        ? "material-form__error active"
+                        : "material-form__error"
                     }
                   >
                     {errors.meaning}
@@ -169,6 +189,21 @@ class AddWordComponent extends Component {
             )}
           />
         </div>
+        <ToastContainer />
+        <Modal
+          showCloseIcon={false}
+          onClose={() => this.props.history.push('/home')}
+          open={this.state.isShowModal}
+          center
+          classNames={{
+            modal: 'modal-type-1'
+          }}
+        >
+          <h1>Notification</h1>
+          <p>Do you want to continue for adding new word ?</p>
+          <button onClick={() => this.props.history.push('/home')}>No</button>
+          <button onClick={() => this.setState({'isShowModal': false})}>Yes</button>
+        </Modal>
       </div>
     );
   }

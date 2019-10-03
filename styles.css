@@ -4,6 +4,7 @@ html {
   background-image: url(https://www.ultraimg.com/images/2UeGfhZ.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  bottom: 0;
 }
 
 *,
@@ -193,7 +194,7 @@ body {
   color: White;
   font-weight: 700;
 }
-.main .view .viewHeader .functions .button.active {
+.main .view .viewHeader .functions .button.blue {
   background-color: #54b9cd;
 }
 .main .view .viewHeader .functions .button.inverz {
@@ -228,6 +229,10 @@ body {
   height: 50px;
   line-height: 50px;
   list-style: none;
+  border-top: 1px solid #e0e0e0;
+}
+.main .view .content .list ul li:first-child {
+  border-top: 0;
 }
 .main .view .content .list ul li.checked {
   background-color: #F0F4F5;
@@ -271,4 +276,27 @@ body {
 
 .clear {
   clear: both;
+}
+
+.modal-type-1 {
+  padding: 30px;
+  background: #28bae6;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.23);
+  color: #fff;
+  text-align: center;
+}
+
+.modal-type-1 p {
+  margin: 10px 0;
+}
+
+.modal-type-1 button {
+  width: 160px;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin: 10px;
+  cursor: pointer;
+  background: none;
+  color: #fff;
+  font-size: 14px;
 }

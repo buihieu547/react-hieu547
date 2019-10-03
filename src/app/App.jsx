@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import HomeContainer from "./home/HomeContainer";
 import AddWordContainer from "./vocabulary/AddWordContainer";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 class App extends Component {
   constructor(props) {
@@ -39,9 +43,11 @@ class App extends Component {
             </div>
           </div>
           <Router>
-            <Route exact path="/" component={HomeContainer} />
-            <Route path="/home" component={HomeContainer} />
-            <Route path="/add-new-word" component={AddWordContainer} />
+            <Switch>
+              <Route exact path="/home" component={HomeContainer} />
+              <Route path="/add-new-word" component={AddWordContainer} />
+              <Redirect from="/" to="/home" />
+            </Switch>
           </Router>
         </div>
       </div>

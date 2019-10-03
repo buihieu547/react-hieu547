@@ -13,7 +13,9 @@ class App extends Component {
     document.querySelectorAll("[data-loading]")[0].remove();
   }
 
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    
+  };
 
   render() {
     return (

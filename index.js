@@ -15,6 +15,12 @@ import { createStore, applyMiddleware } from "redux";
 const middleware = applyMiddleware(thunk, logger);
 const store = createStore(rootReducer, middleware);
 
+store.subscribe(() => {
+  localStorage.setItem("state", JSON.stringify(store.getState()));
+});
+
+console.log(store.getState());
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

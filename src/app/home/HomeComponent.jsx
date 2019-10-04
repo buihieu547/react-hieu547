@@ -27,8 +27,8 @@ class HomeComponent extends Component {
             <ul>
               {vocabularyList.map((e, i) => (
                 <li key={e.id}>
-                  <label class="label--checkbox">
-                    <input type="checkbox" class="checkbox" />
+                  <label className="label--checkbox">
+                    <input type="checkbox" className="checkbox" />
                   </label>
                   <span className="margin-right-20 emphasize">
                     {e.name}

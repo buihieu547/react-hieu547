@@ -1,7 +1,7 @@
 import types from "./types";
 
 const INITIAL_STATE = {
-  vocabularyList: []
+  vocabularyList: ((JSON.parse(localStorage.getItem('state')) || {}).vocabulary || {}).vocabularyList || []
 };
 
 const vocabularyReducer = (state = INITIAL_STATE, action) => {

@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
-import Modal from "react-responsive-modal";
+import { confirmAlert } from "react-confirm-alert";
 import "./duck/styles.css";
 
 const validateForm = Yup.object().shape({
@@ -28,9 +28,6 @@ const form = {
 class AddWordComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isShowModal: false
-    };
   }
 
   submit(value, actions) {
@@ -40,11 +37,33 @@ class AddWordComponent extends Component {
       this.props.onAddNewWord(value);
       toast.success("You add successful!");
       actions.resetForm();
-      this.setState({ isShowModal: true });
+      setTimeout(() => {
+        confirmAlert({
+          onClickOutside: () => {
+            this.props.history.push("/home");
+          },
+          customUI: ({ onClose }) => (
+            <div className="modal-type-1">
+              <h1>Notification</h1>
+              <p>You want to continue add word?</p>
+              <button
+                onClick={() => {
+                  onClose();
+                  this.props.history.push("/home");
+                }}
+              >
+                No
+              </button>
+              <button onClick={onClose}>Yes</button>
+            </div>
+          )
+        });
+      }, 1000);
     }
   }
 
   render() {
+    console.log("a");
     return (
       <div className="view">
         <div className="viewHeader">
@@ -165,7 +184,7 @@ class AddWordComponent extends Component {
                   >
                     {errors.pronunciation_us}
                   </p>
-                </div>              
+                </div>
                 <div className="material-form__container">
                   <Field
                     type="text"
@@ -222,22 +241,6 @@ class AddWordComponent extends Component {
           />
         </div>
         <ToastContainer />
-        <Modal
-          showCloseIcon={false}
-          onClose={() => this.props.history.push("/home")}
-          open={this.state.isShowModal}
-          center
-          classNames={{
-            modal: "modal-type-1"
-          }}
-        >
-          <h1>Notification</h1>
-          <p>Do you want to continue for adding new word ?</p>
-          <button onClick={() => this.props.history.push("/home")}>No</button>
-          <button onClick={() => this.setState({ isShowModal: false })}>
-            Yes
-          </button>
-        </Modal>
       </div>
     );
   }

@@ -23,6 +23,10 @@ body {
   font-smoothing: antialiased;
 }
 
+.react-confirm-alert-blur {
+  filter: none !important;
+}
+
 .page {
   position: absolute;
   width: 90%;

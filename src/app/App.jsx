@@ -4,6 +4,7 @@ import HomeContainer from "./home/HomeContainer";
 import AddWordContainer from "./vocabulary/AddWordContainer";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 toast.configure();
 

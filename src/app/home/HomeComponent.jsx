@@ -3,8 +3,20 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
 class HomeComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {ids: {}}
+  }
+
+  addIdToList(event, id) {
+    const { ids } = this.state;
+    ids[id] = event.target.checked;
+    this.setState({ ...this.state, ids: ids});
+  }
+
   render() {
     const { vocabularyList } = this.props.all.vocabulary;
+    const { ids } = this.state;
 
     return (
       <div className="view">
@@ -28,7 +40,7 @@ class HomeComponent extends Component {
               {vocabularyList.map((e, i) => (
                 <li key={e.id}>
                   <label className="label--checkbox">
-                    <input type="checkbox" className="checkbox" />
+                    <input onClick={event => this.addIdToList(event, e.id)} type="checkbox" className="checkbox" checked={!!ids[e.id]} />
                   </label>
                   <span className="margin-right-20 emphasize">
                     {e.name}
@@ -43,7 +55,13 @@ class HomeComponent extends Component {
                   <span className="margin-left-20 margin-right-20">=></span>
                   <span className="emphasize">{e.meaning}</span>
                   <div className="info">
-                    <div className="button">Backlog</div>
+                    <div className="button inverz">
+                      <i className="fa fa-edit" />
+                    </div>
+                    <div className="button inverz">
+                      <i className="fa fa-trash-o" />
+                    </div>
+                    <div className="button">Inactive</div>
                   </div>
                 </li>
               ))}

@@ -245,14 +245,6 @@ body {
   float: left;
   margin-right: 15px;
 }
-.main .view .content .list ul li i {
-  float: left;
-  width: 30px;
-  height: 50px;
-  line-height: 50px;
-  margin-left: 10px;
-  font-size: 1.3em;
-}
 .main .view .content .list ul li span {
   float: left;
   font-weight: 600;
@@ -267,7 +259,7 @@ body {
   font-size: 11px;
 }
 .main .view .content .list ul li .info .button {
-  float: right;
+  float: left;
   width: 100px;
   height: 30px;
   line-height: 30px;
@@ -275,11 +267,20 @@ body {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  margin: 10px 10px;
+  margin: 10px 0 10px 10px;
   text-align: center;
   cursor: pointer;
   color: White;
   font-weight: 700;
+}
+.main .view .content .list ul li .info .button.inverz {
+    border: 1px solid;
+    color: #aaa;
+    width: auto;
+    background: transparent;
+    padding: 0 10px;
+    font-size: 18px;
+    line-height: 28px;
 }
 .main .view .content .list ul li .info .button.green {
   background-color: #85C157;

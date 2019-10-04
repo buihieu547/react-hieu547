@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import HomeComponent from './HomeComponent';
 import { homeActions } from './duck';
+import { vocabularyActions } from '../vocabulary/duck';
 
 const mapStateToProps = state => {
   return { all: state }
 };
 
 const mapDispatchToProps = dispatch => {
-  const onIncrementClick = () => dispatch(homeActions.incrementCount(1));
+  const removeWord = (ids) => dispatch(vocabularyActions.removeWord(ids));
   
   return {
-    onIncrementClick,
+    removeWord,
   }
 };
 

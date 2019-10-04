@@ -5,6 +5,12 @@ const addNewWord = value => ({
   value: value
 });
 
+const removeWord = ids => ({
+  type: types.REMOVE_WORD,
+  ids: ids
+});
+
 export default {
-  addNewWord
+  addNewWord,
+  removeWord
 };

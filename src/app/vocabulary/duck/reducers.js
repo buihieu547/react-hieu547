@@ -18,6 +18,18 @@ const vocabularyReducer = (state = INITIAL_STATE, action) => {
       };
     }
 
+    case types.REMOVE_WORD: {
+      const { ids } = action;
+      const { vocabularyList } = state;
+
+      console.log(ids);
+
+      return {
+        ...state,
+        vocabularyList: vocabularyList
+      };
+    }
+
     default:
       return state;
   }

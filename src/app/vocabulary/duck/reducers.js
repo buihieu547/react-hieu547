@@ -19,14 +19,12 @@ const vocabularyReducer = (state = INITIAL_STATE, action) => {
     }
 
     case types.REMOVE_WORD: {
-      const { ids } = action;
+      const ids = new Set(action.ids);
       const { vocabularyList } = state;
-
-      console.log(ids);
 
       return {
         ...state,
-        vocabularyList: vocabularyList
+        vocabularyList: vocabularyList.filter(e => !(ids.has(e.id)))
       };
     }
 

@@ -52,6 +52,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/home" component={HomeContainer} />
               <Route path="/add-new-word" component={AddWordContainer} />
+              <Route path="/edit-word/:id" component={AddWordContainer} />
               <Redirect from="/" to="/home" />
             </Switch>
           </Router>

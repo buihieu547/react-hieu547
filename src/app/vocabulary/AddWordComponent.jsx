@@ -63,7 +63,6 @@ class AddWordComponent extends Component {
   }
 
   render() {
-    console.log("a");
     return (
       <div className="view">
         <div className="viewHeader">

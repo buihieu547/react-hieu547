@@ -19,8 +19,6 @@ store.subscribe(() => {
   localStorage.setItem("state", JSON.stringify(store.getState()));
 });
 
-console.log(store.getState());
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
